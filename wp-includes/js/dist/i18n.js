@@ -1,14 +1,14 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 200:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  defaultHooks: function() { return /* binding */ defaultHooks; }
+  defaultHooks: () => (/* binding */ defaultHooks)
 });
 
 // UNUSED EXPORTS: actions, addAction, addFilter, applyFilters, createHooks, currentAction, currentFilter, didAction, didFilter, doAction, doingAction, doingFilter, filters, hasAction, hasFilter, removeAction, removeAllActions, removeAllFilters, removeFilter
@@ -38,7 +38,7 @@ function validateNamespace(namespace) {
   return true;
 }
 
-/* harmony default export */ var build_module_validateNamespace = (validateNamespace);
+/* harmony default export */ const build_module_validateNamespace = (validateNamespace);
 
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/validateHookName.js
 /**
@@ -72,7 +72,7 @@ function validateHookName(hookName) {
   return true;
 }
 
-/* harmony default export */ var build_module_validateHookName = (validateHookName);
+/* harmony default export */ const build_module_validateHookName = (validateHookName);
 
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/createAddHook.js
 /**
@@ -176,7 +176,7 @@ function createAddHook(hooks, storeKey) {
   };
 }
 
-/* harmony default export */ var build_module_createAddHook = (createAddHook);
+/* harmony default export */ const build_module_createAddHook = (createAddHook);
 
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/createRemoveHook.js
 /**
@@ -265,7 +265,7 @@ function createRemoveHook(hooks, storeKey) {
   };
 }
 
-/* harmony default export */ var build_module_createRemoveHook = (createRemoveHook);
+/* harmony default export */ const build_module_createRemoveHook = (createRemoveHook);
 
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/createHasHook.js
 /**
@@ -302,7 +302,7 @@ function createHasHook(hooks, storeKey) {
   };
 }
 
-/* harmony default export */ var build_module_createHasHook = (createHasHook);
+/* harmony default export */ const build_module_createHasHook = (createHasHook);
 
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/createRunHook.js
 /**
@@ -368,7 +368,7 @@ function createRunHook(hooks, storeKey) {
   };
 }
 
-/* harmony default export */ var build_module_createRunHook = (createRunHook);
+/* harmony default export */ const build_module_createRunHook = (createRunHook);
 
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/createCurrentHook.js
 /**
@@ -390,7 +390,7 @@ function createCurrentHook(hooks, storeKey) {
   };
 }
 
-/* harmony default export */ var build_module_createCurrentHook = (createCurrentHook);
+/* harmony default export */ const build_module_createCurrentHook = (createCurrentHook);
 
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/createDoingHook.js
 /**
@@ -426,7 +426,7 @@ function createDoingHook(hooks, storeKey) {
   };
 }
 
-/* harmony default export */ var build_module_createDoingHook = (createDoingHook);
+/* harmony default export */ const build_module_createDoingHook = (createDoingHook);
 
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/createDidHook.js
 /**
@@ -465,7 +465,7 @@ function createDidHook(hooks, storeKey) {
   };
 }
 
-/* harmony default export */ var build_module_createDidHook = (createDidHook);
+/* harmony default export */ const build_module_createDidHook = (createDidHook);
 
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/createHooks.js
 /**
@@ -526,7 +526,7 @@ function createHooks() {
   return new _Hooks();
 }
 
-/* harmony default export */ var build_module_createHooks = (createHooks);
+/* harmony default export */ const build_module_createHooks = (createHooks);
 
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/hooks/build-module/index.js
 /**
@@ -592,8 +592,8 @@ const {
 
 /***/ }),
 
-/***/ 243:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 124:
+/***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/* global window, exports, define */
 
@@ -829,11 +829,101 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/* global window, exports, define */
 }(); // eslint-disable-line
 
 
-/***/ }),
+/***/ })
 
-/***/ 756:
-/***/ (function(module) {
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
 
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  __: () => (/* reexport */ __),
+  _n: () => (/* reexport */ _n),
+  _nx: () => (/* reexport */ _nx),
+  _x: () => (/* reexport */ _x),
+  createI18n: () => (/* reexport */ createI18n),
+  defaultI18n: () => (/* reexport */ default_i18n),
+  getLocaleData: () => (/* reexport */ getLocaleData),
+  hasTranslation: () => (/* reexport */ hasTranslation),
+  isRTL: () => (/* reexport */ isRTL),
+  resetLocaleData: () => (/* reexport */ resetLocaleData),
+  setLocaleData: () => (/* reexport */ setLocaleData),
+  sprintf: () => (/* reexport */ sprintf_sprintf),
+  subscribe: () => (/* reexport */ subscribe)
+});
+
+;// CONCATENATED MODULE: ./node_modules/memize/dist/index.js
 /**
  * Memize options object.
  *
@@ -866,14 +956,14 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/* global window, exports, define */
  * Accepts a function to be memoized, and returns a new memoized function, with
  * optional options.
  *
- * @template {Function} F
+ * @template {(...args: any[]) => any} F
  *
  * @param {F}             fn        Function to memoize.
  * @param {MemizeOptions} [options] Options object.
  *
- * @return {F & MemizeMemoizedFunction} Memoized function.
+ * @return {((...args: Parameters<F>) => ReturnType<F>) & MemizeMemoizedFunction} Memoized function.
  */
-function memize( fn, options ) {
+function memize(fn, options) {
 	var size = 0;
 
 	/** @type {?MemizeCacheNode|undefined} */
@@ -884,12 +974,13 @@ function memize( fn, options ) {
 
 	options = options || {};
 
-	function memoized( /* ...args */ ) {
+	function memoized(/* ...args */) {
 		var node = head,
 			len = arguments.length,
-			args, i;
+			args,
+			i;
 
-		searchCache: while ( node ) {
+		searchCache: while (node) {
 			// Perform a shallow equality test to confirm that whether the node
 			// under test is a candidate for the arguments passed. Two arrays
 			// are shallowly equal if their length matches and each entry is
@@ -897,14 +988,14 @@ function memize( fn, options ) {
 			// function which could incur an arguments leaking deoptimization.
 
 			// Check whether node arguments match arguments length
-			if ( node.args.length !== arguments.length ) {
+			if (node.args.length !== arguments.length) {
 				node = node.next;
 				continue;
 			}
 
 			// Check whether node arguments match arguments values
-			for ( i = 0; i < len; i++ ) {
-				if ( node.args[ i ] !== arguments[ i ] ) {
+			for (i = 0; i < len; i++) {
+				if (node.args[i] !== arguments[i]) {
 					node = node.next;
 					continue searchCache;
 				}
@@ -913,23 +1004,23 @@ function memize( fn, options ) {
 			// At this point we can assume we've found a match
 
 			// Surface matched node to head if not already
-			if ( node !== head ) {
+			if (node !== head) {
 				// As tail, shift to previous. Must only shift if not also
 				// head, since if both head and tail, there is no previous.
-				if ( node === tail ) {
+				if (node === tail) {
 					tail = node.prev;
 				}
 
 				// Adjust siblings to point to each other. If node was tail,
 				// this also handles new tail's empty `next` assignment.
-				/** @type {MemizeCacheNode} */ ( node.prev ).next = node.next;
-				if ( node.next ) {
+				/** @type {MemizeCacheNode} */ (node.prev).next = node.next;
+				if (node.next) {
 					node.next.prev = node.prev;
 				}
 
 				node.next = head;
 				node.prev = null;
-				/** @type {MemizeCacheNode} */ ( head ).prev = node;
+				/** @type {MemizeCacheNode} */ (head).prev = node;
 				head = node;
 			}
 
@@ -940,23 +1031,23 @@ function memize( fn, options ) {
 		// No cached value found. Continue to insertion phase:
 
 		// Create a copy of arguments (avoid leaking deoptimization)
-		args = new Array( len );
-		for ( i = 0; i < len; i++ ) {
-			args[ i ] = arguments[ i ];
+		args = new Array(len);
+		for (i = 0; i < len; i++) {
+			args[i] = arguments[i];
 		}
 
 		node = {
 			args: args,
 
 			// Generate the result from original function
-			val: fn.apply( null, args ),
+			val: fn.apply(null, args),
 		};
 
 		// Don't need to check whether node is already head, since it would
 		// have been returned above already if it was
 
 		// Shift existing head down list
-		if ( head ) {
+		if (head) {
 			head.prev = node;
 			node.next = head;
 		} else {
@@ -965,9 +1056,9 @@ function memize( fn, options ) {
 		}
 
 		// Trim tail if we're reached max size and are pending cache insertion
-		if ( size === /** @type {MemizeOptions} */ ( options ).maxSize ) {
-			tail = /** @type {MemizeCacheNode} */ ( tail ).prev;
-			/** @type {MemizeCacheNode} */ ( tail ).next = null;
+		if (size === /** @type {MemizeOptions} */ (options).maxSize) {
+			tail = /** @type {MemizeCacheNode} */ (tail).prev;
+			/** @type {MemizeCacheNode} */ (tail).next = null;
 		} else {
 			size++;
 		}
@@ -977,13 +1068,11 @@ function memize( fn, options ) {
 		return node.val;
 	}
 
-	memoized.clear = function() {
+	memoized.clear = function () {
 		head = null;
 		tail = null;
 		size = 0;
 	};
-
-	if ( false ) {}
 
 	// Ignore reason: There's not a clear solution to create an intersection of
 	// the function with additional properties, where the goal is to retain the
@@ -994,108 +1083,10 @@ function memize( fn, options ) {
 	return memoized;
 }
 
-module.exports = memize;
 
 
-/***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	}();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	}();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	}();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
-!function() {
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  __: function() { return /* reexport */ __; },
-  _n: function() { return /* reexport */ _n; },
-  _nx: function() { return /* reexport */ _nx; },
-  _x: function() { return /* reexport */ _x; },
-  createI18n: function() { return /* reexport */ createI18n; },
-  defaultI18n: function() { return /* reexport */ default_i18n; },
-  getLocaleData: function() { return /* reexport */ getLocaleData; },
-  hasTranslation: function() { return /* reexport */ hasTranslation; },
-  isRTL: function() { return /* reexport */ isRTL; },
-  resetLocaleData: function() { return /* reexport */ resetLocaleData; },
-  setLocaleData: function() { return /* reexport */ setLocaleData; },
-  sprintf: function() { return /* reexport */ sprintf_sprintf; },
-  subscribe: function() { return /* reexport */ subscribe; }
-});
-
-// EXTERNAL MODULE: ./node_modules/memize/index.js
-var memize = __webpack_require__(756);
-var memize_default = /*#__PURE__*/__webpack_require__.n(memize);
-// EXTERNAL MODULE: ./node_modules/@wordpress/i18n/node_modules/sprintf-js/src/sprintf.js
-var sprintf = __webpack_require__(243);
+// EXTERNAL MODULE: ./node_modules/sprintf-js/src/sprintf.js
+var sprintf = __webpack_require__(124);
 var sprintf_default = /*#__PURE__*/__webpack_require__.n(sprintf);
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/i18n/build-module/sprintf.js
 /**
@@ -1111,7 +1102,7 @@ var sprintf_default = /*#__PURE__*/__webpack_require__.n(sprintf);
  * @param {...*} args Arguments to pass to `console.error`
  */
 
-const logErrorOnce = memize_default()(console.error); // eslint-disable-line no-console
+const logErrorOnce = memize(console.error); // eslint-disable-line no-console
 
 /**
  * Returns a formatted string. If an error occurs in applying the format, the
@@ -2158,7 +2149,7 @@ const i18n = createI18n(undefined, undefined, build_module.defaultHooks);
  * Default, singleton instance of `I18n`.
  */
 
-/* harmony default export */ var default_i18n = (i18n);
+/* harmony default export */ const default_i18n = (i18n);
 /*
  * Comments in this file are duplicated from ./i18n due to
  * https://github.com/WordPress/gutenberg/pull/20318#issuecomment-590837722
@@ -2296,7 +2287,8 @@ const hasTranslation = i18n.hasTranslation.bind(i18n);
 
 
 
-}();
+})();
+
 (window.wp = window.wp || {}).i18n = __webpack_exports__;
 /******/ })()
 ;
