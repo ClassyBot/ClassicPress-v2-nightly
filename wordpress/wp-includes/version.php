@@ -22,12 +22,12 @@
  * In released builds it will never contain the '+dev' suffix.
  *
  * When nightly (development) builds are created, this suffix is automatically
- * updated to e.g. '+nightly.20181019'.  When alpha, beta, or final release
+ * updated to e.g. '+migration.20181019'.  When alpha, beta, or final release
  * builds are created, the suffix is removed.
  *
  * @global string $cp_version
  */
-$cp_version = '2.0.0+nightly.20230531';
+$cp_version = '2.0.0+migration.20230601';
 
 /**
  * The WordPress version string.
