@@ -69,6 +69,8 @@ $_old_files = array(
 	'wp-includes/widgets/class-wp-widget-block.php',
 	// Removed in 1.0.0-rc1
 	'wp-admin/includes/class-wp-community-events.php',
+	// 5.1
+	'wp-includes/js/tinymce/wp-tinymce.js.gz',
 	// Added in 5.2.3 or older, not included in ClassicPress
 	'wp-includes/sodium_compat',
 
