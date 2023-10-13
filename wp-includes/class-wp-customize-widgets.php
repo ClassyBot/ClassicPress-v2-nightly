@@ -852,7 +852,7 @@ final class WP_Customize_Widgets {
 					_e( 'Search Widgets' );
 					?>
 				</label>
-				<input type="text" id="widgets-search" placeholder="<?php esc_attr_e( 'Search widgets&hellip;' ); ?>" aria-describedby="widgets-search-desc" />
+				<input type="text" id="widgets-search" placeholder="<?php esc_attr_e( 'Search widgets&hellip;' ); ?>" aria-describedby="widgets-search-desc">
 				<div class="search-icon" aria-hidden="true"></div>
 				<button type="button" class="clear-results"><span class="screen-reader-text">
 					<?php
@@ -867,14 +867,14 @@ final class WP_Customize_Widgets {
 					?>
 				</p>
 			</div>
-			<div id="available-widgets-list">
+			<ul id="available-widgets-list">
 			<?php foreach ( $this->get_available_widgets() as $available_widget ) : ?>
-				<div id="widget-tpl-<?php echo esc_attr( $available_widget['id'] ); ?>" data-widget-id="<?php echo esc_attr( $available_widget['id'] ); ?>" class="widget-tpl <?php echo esc_attr( $available_widget['id'] ); ?>" tabindex="0">
+				<li id="widget-tpl-<?php echo esc_attr( $available_widget['id'] ); ?>" data-widget-id="<?php echo esc_attr( $available_widget['id'] ); ?>" class="widget-tpl <?php echo esc_attr( $available_widget['id'] ); ?>" tabindex="0">
 					<?php echo $available_widget['control_tpl']; ?>
-				</div>
+				</li>
 			<?php endforeach; ?>
 			<p class="no-widgets-found-message"><?php _e( 'No widgets found.' ); ?></p>
-			</div><!-- #available-widgets-list -->
+			</ul><!-- #available-widgets-list -->
 		</div><!-- #available-widgets -->
 		</div><!-- #widgets-left -->
 		<?php
@@ -1232,7 +1232,7 @@ final class WP_Customize_Widgets {
 		}
 
 		?>
-		<script type="text/javascript">
+		<script>
 			var _wpWidgetCustomizerPreviewSettings = <?php echo wp_json_encode( $settings ); ?>;
 		</script>
 		<?php
