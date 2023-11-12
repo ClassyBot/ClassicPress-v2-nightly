@@ -53,7 +53,7 @@ function classicpress_asset_version( $type = 'script', $handle = null ) {
 	static $default_version;
 
 	if ( empty( $default_version ) ) {
-		$default_version = 'cp_a7ea8e6e';
+		$default_version = 'cp_9eddc490';
 	}
 
 	/**
@@ -210,6 +210,23 @@ function wp_default_packages_inline_scripts( $scripts ) {
 				),
 			)
 		),
+		'after'
+	);
+
+	// Loading the old editor and its config to ensure the classic block works as expected.
+	$scripts->add_inline_script(
+		'editor',
+		'window.wp.oldEditor = window.wp.editor;',
+		'after'
+	);
+
+	// wp-editor module is exposed as window.wp.editor
+	// Problem: there is quite some code expecting window.wp.oldEditor object available under window.wp.editor
+	// Solution: fuse the two objects together to maintain backward compatibility
+	// For more context, see https://github.com/WordPress/gutenberg/issues/33203
+	$scripts->add_inline_script(
+		'wp-editor',
+		'Object.assign( window.wp.editor, window.wp.oldEditor );',
 		'after'
 	);
 }
