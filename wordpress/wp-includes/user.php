@@ -1006,7 +1006,6 @@ function get_blogs_of_user( $user_id, $all = false ) {
 		$args = array(
 			'number'                 => '',
 			'site__in'               => $site_ids,
-			'update_site_meta_cache' => false,
 		);
 		if ( ! $all ) {
 			$args['archived'] = 0;
@@ -1907,6 +1906,7 @@ function clean_user_cache( $user ) {
 	}
 
 	wp_cache_delete( $user->ID, 'user_meta' );
+	wp_cache_set_users_last_changed();
 
 	/**
 	 * Fires immediately after the given user's cache is cleaned.
@@ -4968,4 +4968,13 @@ function wp_is_application_passwords_available_for_user( $user ) {
 	 * @param WP_User $user      The user to check.
 	 */
 	return apply_filters( 'wp_is_application_passwords_available_for_user', true, $user );
+}
+
+/**
+ * Sets the last changed time for the 'users' cache group.
+ *
+ * @since 6.3.0
+ */
+function wp_cache_set_users_last_changed() {
+	wp_cache_set( 'last_changed', microtime(), 'users' );
 }
