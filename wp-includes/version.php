@@ -27,7 +27,7 @@
  *
  * @global string $cp_version
  */
-$cp_version = '2.1.1+nightly.20240626';
+$cp_version = '2.1.1+nightly.20240627';
 
 /**
  * The WordPress version string.
@@ -47,6 +47,14 @@ $wp_version = '6.2.5';
  * @global int $wp_db_version
  */
 $wp_db_version = 56657;
+
+/**
+ * Holds the ClassicPress DB revision, increments when changes are made to the ClassicPress DB schema.
+ * Suggestion: use the number on the Pull Request where version is bumped.
+ *
+ * @global int $cp_db_version
+ */
+$cp_db_version = 1438;
 
 /**
  * Holds the TinyMCE version.
