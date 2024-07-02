@@ -27,7 +27,7 @@
  *
  * @global string $cp_version
  */
-$cp_version = '2.1.1+migration.20240630';
+$cp_version = '2.1.1+migration.20240701';
 
 /**
  * The WordPress version string.
@@ -54,7 +54,7 @@ $wp_db_version = 56657;
  *
  * @global int $cp_db_version
  */
-$cp_db_version = 1438;
+$cp_db_version = 1446;
 
 /**
  * Holds the TinyMCE version.
