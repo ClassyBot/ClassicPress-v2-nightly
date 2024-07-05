@@ -1649,6 +1649,8 @@ function cp_deprecated_scripts() {
 		'wp-pointer',
 		'farbtastic',
 		'thickbox',
+		'clipboard',
+		'hoverIntent',
 	);
 }
 
