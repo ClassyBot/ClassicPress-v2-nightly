@@ -108,9 +108,9 @@ if ( isset( $_GET['mode'] ) && in_array( $_GET['mode'], $modes, true ) ) {
 if ( 'grid' === $mode ) {
 	// Styles and scripts since CP-2.3.0
 	wp_enqueue_style( 'mediaelement-player' );
-	wp_enqueue_style( 'media-grid' );
 	wp_enqueue_style( 'cp-filepond-image-preview' );
 	wp_enqueue_style( 'cp-filepond' );
+	wp_enqueue_style( 'media-grid' );
 	wp_enqueue_script( 'wp-mediaelement' );
 	wp_enqueue_script( 'media-grid' );
 
@@ -192,12 +192,10 @@ if ( 'grid' === $mode ) {
 	$mimes_list = implode( ',', $allowed_mimes );
 
 	// Get the user's preferred items per page.
-	$user = get_current_user_id();
-	$screen = get_current_screen();
-	$screen_option = $screen->get_option( 'per_page', 'option' );
-	$per_page = get_user_meta( $user, $screen_option, true );
+	$user_id = get_current_user_id();
+	$per_page = get_user_meta( $user_id, 'media_grid_per_page', true );
 	if ( empty( $per_page ) || $per_page < 1 ) {
-		$per_page = $screen->get_option( 'per_page', 'default' );
+		$per_page = 80;
 	}
 
 	// Fetch media items.
