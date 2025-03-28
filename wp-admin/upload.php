@@ -166,7 +166,7 @@ if ( 'grid' === $mode ) {
 			'title'   => __( 'Attachment Details' ),
 			'content' =>
 				'<p>' . __( 'Clicking an item will display an Attachment Details dialog, which allows you to preview media and make quick edits. Any changes you make to the attachment details will be automatically saved.' ) . '</p>' .
-				'<p>' . __( 'Use the arrow buttons at the top of the dialog, or the left and right arrow keys on your keyboard, to navigate between media items quickly.' ) . '</p>' .
+				'<p>' . __( 'Use the arrow buttons at the top of the dialog, the left and right arrow keys on your keyboard, or swipe left and right on a touch device to navigate between media items.' ) . '</p>' .
 				'<p>' . __( 'You can also delete individual items and access the extended edit screen from the details dialog.' ) . '</p>',
 		)
 	);
@@ -371,7 +371,7 @@ if ( 'grid' === $mode ) {
 						<span class="paging-input">
 							<label for="current-page-selector" class="screen-reader-text"><?php esc_html_e( 'Current Page' ); ?></label>
 							<input class="current-page" id="current-page-selector" type="text" name="paged" value="<?php echo esc_attr( $paged ); ?>" size="4" aria-describedby="table-paging">
-							<span class="tablenav-paging-text"> <?php esc_html_e( 'of' ); ?> <span class="total-pages"><?php echo esc_html( $total_pages ); ?></span></span>
+							<span id="table-paging" class="tablenav-paging-text"> <?php esc_html_e( 'of' ); ?> <span class="total-pages"><?php echo esc_html( $total_pages ); ?></span></span>
 						</span>
 						<a class="next-page button" href="<?php echo admin_url( '/upload.php?paged=' . $next_page ); ?>"
 							<?php
@@ -433,6 +433,8 @@ if ( 'grid' === $mode ) {
 					$update_nonce = $meta['nonces']['update'];
 					$delete_nonce = $meta['nonces']['delete'];
 					$edit_nonce   = $meta['nonces']['edit'];
+					$editable     = current_user_can( 'delete_post', $attachment->ID ) ? 1 : 0;
+					$erasable     = current_user_can( 'delete_post', $attachment->ID ) ? 1 : 0;
 					$image        = '<img src="' . esc_url( $url ) . '" alt="' . esc_attr( $alt ) . '">';
 
 					// Use an icon if the file uploaded is not an image
@@ -474,6 +476,8 @@ if ( 'grid' === $mode ) {
 						data-update-nonce="<?php echo $update_nonce; ?>"
 						data-delete-nonce="<?php echo $delete_nonce; ?>"
 						data-edit-nonce="<?php echo $edit_nonce; ?>"
+						data-editable="<?php echo $editable; ?>"
+						data-erasable="<?php echo $erasable; ?>"
 						>
 
 						<div class="select-attachment-preview <?php echo esc_attr( 'type-' . $file_type . ' subtype-' . $subtype . ' ' . $orientation ); ?>">
