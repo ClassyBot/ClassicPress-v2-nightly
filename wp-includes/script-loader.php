@@ -53,7 +53,7 @@ function classicpress_asset_version( $type = 'script', $handle = null ) {
 	static $default_version;
 
 	if ( empty( $default_version ) ) {
-		$default_version = 'cp_0b9ea598';
+		$default_version = 'cp_05edf1b8';
 	}
 
 	/**
@@ -1484,7 +1484,7 @@ function wp_default_styles( $styles ) {
 	$styles->add( 'themes', "/wp-admin/css/themes$suffix.css" );
 	$styles->add( 'about', "/wp-admin/css/about$suffix.css" );
 	$styles->add( 'nav-menus', "/wp-admin/css/nav-menus$suffix.css" );
-	$styles->add( 'widgets', "/wp-admin/css/widgets$suffix.css", array( 'wp-pointer' ) );
+	$styles->add( 'widgets', "/wp-admin/css/widgets$suffix.css" );
 	$styles->add( 'site-icon', "/wp-admin/css/site-icon$suffix.css" );
 	$styles->add( 'l10n', "/wp-admin/css/l10n$suffix.css" );
 	$styles->add( 'code-editor', "/wp-admin/css/code-editor$suffix.css", array( 'wp-codemirror' ) );
