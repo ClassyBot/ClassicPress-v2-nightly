@@ -770,12 +770,20 @@ border color while dragging a file over the uploader drop area */
 	cursor: default;
 }
 
+.edit-attachment-frame .media-frame-content,
 .edit-attachment-frame .media-frame-router {
 	right: 0;
 }
 
+.edit-attachment-frame .media-frame-title {
+	right: 0;
+	left: 300px; /* leave space for prev/next/close */
+}
+
 .edit-attachment-frame .media-frame-content {
 	border-bottom: none;
+	bottom: 0;
+	top: 50px;
 }
 
 .edit-attachment-frame .attachment-details {
