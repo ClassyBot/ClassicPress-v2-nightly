@@ -53,7 +53,7 @@ function classicpress_asset_version( $type = 'script', $handle = null ) {
 	static $default_version;
 
 	if ( empty( $default_version ) ) {
-		$default_version = 'cp_1d6e5fcb';
+		$default_version = 'cp_5ba405e0';
 	}
 
 	/**
