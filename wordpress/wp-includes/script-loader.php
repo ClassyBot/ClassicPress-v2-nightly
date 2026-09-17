@@ -53,7 +53,7 @@ function classicpress_asset_version( $type = 'script', $handle = null ) {
 	static $default_version;
 
 	if ( empty( $default_version ) ) {
-		$default_version = 'cp_e95949b0';
+		$default_version = 'cp_5ed8a1b1';
 	}
 
 	/**
@@ -616,8 +616,8 @@ function wp_default_scripts( $scripts ) {
 	$scripts->add( 'cropper', '/wp-includes/js/crop/cropper.js', array( 'scriptaculous-dragdrop' ) );
 
 	// New version of cropper, which replaces imgareaselect for cropping
-	$scripts->add( 'cropperjs', '/wp-includes/js/crop/cropper.min.js', array(), '2.1.1', 1 );
-	$scripts->add( 'cp-cropper', "/wp-includes/js/cp-cropper$suffix.js", array( 'cropperjs' ), '2.1.1', 1 );
+	$scripts->add( 'cropperjs', '/wp-includes/js/crop/cropper.min.js', array(), '2.2.0', 1 );
+	$scripts->add( 'cp-cropper', "/wp-includes/js/cp-cropper$suffix.js", array( 'cropperjs' ), '2.2.0', 1 );
 	did_action( 'init' ) && $scripts->localize(
 		'cp-cropper',
 		'CROPPER',
@@ -1090,6 +1090,7 @@ function wp_default_scripts( $scripts ) {
 			'published'               => __( 'Published' ),
 			'saveDraft'               => __( 'Save Draft' ),
 			'draftSaved'              => __( 'Draft Saved' ),
+			'pageCreationFailure'     => __( 'Page could not be created' ),
 			'updating'                => __( 'Updating' ),
 			'schedule'                => _x( 'Schedule', 'customizer changeset action/button label' ),
 			'scheduled'               => _x( 'Scheduled', 'customizer changeset status' ),
