@@ -53,7 +53,7 @@ function classicpress_asset_version( $type = 'script', $handle = null ) {
 	static $default_version;
 
 	if ( empty( $default_version ) ) {
-		$default_version = 'cp_5ce152eb';
+		$default_version = 'cp_6eb4ba92';
 	}
 
 	/**
@@ -1092,6 +1092,7 @@ function wp_default_scripts( $scripts ) {
 			'draftSaved'              => __( 'Draft Saved' ),
 			'pageCreationFailure'     => __( 'Page could not be created' ),
 			'updating'                => __( 'Updating' ),
+			'customizing'             => __( 'Customizing:' ),
 			'schedule'                => _x( 'Schedule', 'customizer changeset action/button label' ),
 			'scheduled'               => _x( 'Scheduled', 'customizer changeset status' ),
 			'invalid'                 => __( 'Invalid' ),
