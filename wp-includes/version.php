@@ -27,7 +27,7 @@
  *
  * @global string $cp_version
  */
-$cp_version = '2.7.3+nightly.20260923';
+$cp_version = '2.7.3+nightly.20260924';
 
 /**
  * The WordPress version string.
