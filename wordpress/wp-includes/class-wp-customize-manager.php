@@ -399,8 +399,6 @@ final class WP_Customize_Manager {
 		add_action( 'wp_ajax_customize_trash', array( $this, 'handle_changeset_trash_request' ) );
 		add_action( 'wp_ajax_customize_refresh_nonces', array( $this, 'refresh_nonces' ) );
 		add_action( 'wp_ajax_customize_load_themes', array( $this, 'handle_load_themes_request' ) );
-		add_filter( 'heartbeat_settings', array( $this, 'add_customize_screen_to_heartbeat_settings' ) );
-		add_filter( 'heartbeat_received', array( $this, 'check_changeset_lock_with_heartbeat' ), 10, 3 );
 		add_action( 'wp_ajax_customize_override_changeset_lock', array( $this, 'handle_override_changeset_lock_request' ) );
 		add_action( 'wp_ajax_customize_dismiss_autosave_or_lock', array( $this, 'handle_dismiss_autosave_or_lock_request' ) );
 		add_action( 'wp_ajax_customize_refresh_lock', array( $this, 'handle_refresh_lock_request' ) );
@@ -3363,26 +3361,6 @@ final class WP_Customize_Manager {
 	}
 
 	/**
-	 * Filters heartbeat settings for the Customizer.
-	 *
-	 * @since 4.9.0
-	 *
-	 * @global string $pagenow The filename of the current screen.
-	 *
-	 * @param array $settings Current settings to filter.
-	 * @return array Heartbeat settings.
-	 */
-	public function add_customize_screen_to_heartbeat_settings( $settings ) {
-		global $pagenow;
-
-		if ( 'customize.php' === $pagenow ) {
-			$settings['screenId'] = 'customize';
-		}
-
-		return $settings;
-	}
-
-	/**
 	 * Gets lock user data.
 	 *
 	 * @since 4.9.0
@@ -3406,43 +3384,6 @@ final class WP_Customize_Manager {
 			'name'   => $lock_user->display_name,
 			'avatar' => get_avatar_url( $lock_user->ID, array( 'size' => 128 ) ),
 		);
-	}
-
-	/**
-	 * Checks locked changeset with heartbeat API.
-	 *
-	 * @since 4.9.0
-	 *
-	 * @param array  $response  The Heartbeat response.
-	 * @param array  $data      The $_POST data sent.
-	 * @param string $screen_id The screen id.
-	 * @return array The Heartbeat response.
-	 */
-	public function check_changeset_lock_with_heartbeat( $response, $data, $screen_id ) {
-		if ( isset( $data['changeset_uuid'] ) ) {
-			$changeset_post_id = $this->find_changeset_post_id( $data['changeset_uuid'] );
-		} else {
-			$changeset_post_id = $this->changeset_post_id();
-		}
-
-		if (
-			array_key_exists( 'check_changeset_lock', $data )
-			&& 'customize' === $screen_id
-			&& $changeset_post_id
-			&& current_user_can( get_post_type_object( 'customize_changeset' )->cap->edit_post, $changeset_post_id )
-		) {
-			$lock_user_id = wp_check_post_lock( $changeset_post_id );
-
-			if ( $lock_user_id ) {
-				$response['customize_changeset_lock_user'] = $this->get_lock_user_data( $lock_user_id );
-			} else {
-
-				// Refreshing time will ensure that the user is sitting on customizer and has not closed the customizer tab.
-				$this->refresh_changeset_lock( $changeset_post_id );
-			}
-		}
-
-		return $response;
 	}
 
 	/**
@@ -5396,30 +5337,6 @@ final class WP_Customize_Manager {
 		$this->add_control( new WP_Customize_Background_Image_Control( $this ) );
 
 		$this->add_setting(
-			'background_preset',
-			array(
-				'default'           => get_theme_support( 'custom-background', 'default-preset' ),
-				'theme_supports'    => 'custom-background',
-				'sanitize_callback' => array( $this, '_sanitize_background_setting' ),
-			)
-		);
-
-		$this->add_control(
-			'background_preset',
-			array(
-				'label'   => _x( 'Preset', 'Background Preset' ),
-				'section' => 'background_image',
-				'type'    => 'select',
-				'choices' => array(
-					'default' => _x( 'Default', 'Default Preset' ),
-					'fill'    => __( 'Fill Screen' ),
-					'fit'     => __( 'Fit to Screen' ),
-					'repeat'  => _x( 'Repeat', 'Repeat Image' ),
-				),
-			)
-		);
-
-		$this->add_setting(
 			'background_position_x',
 			array(
 				'default'           => get_theme_support( 'custom-background', 'default-position-x' ),
@@ -5514,7 +5431,7 @@ final class WP_Customize_Manager {
 		// If the theme is using the default background callback, we can update
 		// the background CSS using postMessage.
 		if ( get_theme_support( 'custom-background', 'wp-head-callback' ) === '_custom_background_cb' ) {
-			foreach ( array( 'color', 'image', 'preset', 'position_x', 'position_y', 'size', 'repeat', 'attachment' ) as $prop ) {
+			foreach ( array( 'color', 'image', 'position_x', 'position_y', 'size', 'repeat', 'attachment' ) as $prop ) {
 				$this->get_setting( 'background_' . $prop )->transport = 'postMessage';
 			}
 		}
@@ -5939,10 +5856,6 @@ final class WP_Customize_Manager {
 			}
 		} elseif ( 'background_size' === $setting->id ) {
 			if ( ! in_array( $value, array( 'auto', 'contain', 'cover' ), true ) ) {
-				return new WP_Error( 'invalid_value', __( 'Invalid value for background size.' ) );
-			}
-		} elseif ( 'background_preset' === $setting->id ) {
-			if ( ! in_array( $value, array( 'default', 'fill', 'fit', 'repeat', 'custom' ), true ) ) {
 				return new WP_Error( 'invalid_value', __( 'Invalid value for background size.' ) );
 			}
 		} elseif ( 'background_image' === $setting->id || 'background_image_thumb' === $setting->id ) {

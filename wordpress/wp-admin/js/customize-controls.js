@@ -32,7 +32,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		notificationsContainer = document.querySelector( '#customize-notifications-area ul' );
 
 	let addButton, pond, leftSidebar, customizeButton, orgThemes, newUrl,
-		intersectionObserver,
+		intersectionObserver, queryString,
 		i = 1,
 		{ FilePond } = window, // import FilePond
 		cropContext = false,
@@ -47,7 +47,6 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		lockSettings = window._wpCustomizeSettings || {},
 		lockRefreshTimer = null,
 		queryParams = new URLSearchParams( window.location.search ),
-		queryString = queryParams.toString(),
 		addMenuButtons = document.querySelectorAll( '.add-new-menu-item' ),
 		addWidgetButtons = document.querySelectorAll( '.add-new-widget' ),
 		newMenuItemIDs = window.newMenuItemIDs,
@@ -173,6 +172,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	// Delete redundant query args from browser URL
 	if ( queryParams.get( 'url' ) ) {
 		queryParams.delete( 'url' );
+		queryString = queryParams.toString(); // use updated URL
 		newUrl = window.location.pathname + ( queryString ? '?' + queryString : '' ) + ( hash ? '#' + hash : '' );
 		history.replaceState( null, '', encodeURI( newUrl ) );
 	}
@@ -186,6 +186,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			history.replaceState( null, '', encodeURI( window.location.pathname ) );
 		} else {
 			queryParams.delete( 'return' );
+			queryString = queryParams.toString(); // use updated URL
 			newUrl = window.location.pathname + ( queryString ? '?' + queryString : '' ) + ( hash ? '#' + hash : '' );
 			history.replaceState( null, '', encodeURI( newUrl ) );
 			saveButton.disabled = false;
@@ -196,6 +197,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		}, 0 );
 	} else {
 		queryParams.delete( 'return' );
+		queryString = queryParams.toString(); // use updated URL
 		newUrl = window.location.pathname + ( queryString ? '?' + queryString : '' ) + ( hash ? '#' + hash : '' );
 		history.replaceState( null, '', encodeURI( newUrl ) );
 	}
@@ -543,42 +545,6 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		markChangesetDirty();
 	}
 
-	function updateBackgroundPresetFields( preset ) {
-		switch ( preset ) {
-			case 'fill':
-				_updatedControlsWatcher.background_repeat = 'no-repeat';
-				_updatedControlsWatcher.background_position_x = 'left';
-				_updatedControlsWatcher.background_position_y = 'top';
-				_updatedControlsWatcher.background_size = 'cover';
-				_updatedControlsWatcher.background_attachment = 'fixed';
-				break;
-
-			case 'fit':
-				_updatedControlsWatcher.background_repeat = 'no-repeat';
-				_updatedControlsWatcher.background_position_x = 'left';
-				_updatedControlsWatcher.background_position_y = 'top';
-				_updatedControlsWatcher.background_size = 'contain';
-				_updatedControlsWatcher.background_attachment = 'fixed';
-				break;
-
-			case 'repeat':
-				_updatedControlsWatcher.background_repeat = 'repeat';
-				_updatedControlsWatcher.background_position_x = 'left';
-				_updatedControlsWatcher.background_position_y = 'top';
-				_updatedControlsWatcher.background_size = 'auto';
-				_updatedControlsWatcher.background_attachment = 'scroll';
-				break;
-
-			default:
-				_updatedControlsWatcher.background_repeat = 'repeat';
-				_updatedControlsWatcher.background_position_x = 'left';
-				_updatedControlsWatcher.background_position_y = 'top';
-				_updatedControlsWatcher.background_size = 'auto';
-				_updatedControlsWatcher.background_attachment = 'scroll';
-				break;
-		}
-	}
-
 	inputs.forEach( function( input ) {
 		let settingId,
 			li = input.closest( 'li' );
@@ -606,13 +572,6 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 			if ( input.name === 'background-position' ) {
 				backgroundPositionChanged( input );
-				return;
-			}
-
-			if ( settingId === 'background_preset' ) {
-				_updatedControlsWatcher.background_preset = input.value;
-				updateBackgroundPresetFields( input.value );
-				markChangesetDirty();
 				return;
 			}
 
@@ -2673,6 +2632,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 				queryParams.delete( 'cp_restoring_autosave' );
 				queryParams.delete( 'customize_autosaved' );
 
+				queryString = queryParams.toString(); // use updated URL
 				window.history.replaceState( null, '', window.location.pathname + '?' + queryString + window.location.hash );
 			}
 
@@ -2731,6 +2691,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 				queryParams.delete( 'customize_autosaved' );
 				queryParams.delete( 'cp_restoring_autosave' );
 
+				queryString = queryParams.toString(); // use updated URL
 				window.history.replaceState( null, '', window.location.pathname + ( queryString ? '?' + queryString : '' ) + window.location.hash );
 			}
 
